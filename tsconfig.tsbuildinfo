@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/index.tsx","./src/main.tsx","./src/web-component.tsx","./src/components/filebrowser.tsx","./src/components/filedialog.tsx","./src/components/selectfile.tsx","./vite.config.ts"],"version":"5.9.2"}
+{"root":["./src/app.tsx","./src/index.tsx","./src/iobroker-file-component.tsx","./src/iobroker-select-id-component.tsx","./src/main.tsx","./src/components/filebrowser.tsx","./src/components/filedialog.tsx","./src/components/selectfile.tsx","./src/components/selectid.tsx","./vite.config.ts"],"version":"5.9.2"}

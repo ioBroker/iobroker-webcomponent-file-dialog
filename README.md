@@ -8,6 +8,11 @@ Please note that mixed connections from an HTTP page to a WSS server and vice ve
 
 ![example image](img/example.png)
 
+**Important: this project contains both ioBroker dialogs: file selector and Object ID selector.**
+So If you want to use both dialogs in one project there is no need to load a `@iobroker/webcomponent-selectid-dialog` package.
+
+How to use Object ID dialog you can find [here](https://github.com/ioBroker/iobroker-webcomponent-selectid-dialog/blob/main/README.md)
+
 Before creating the dialog, the socket file must be loaded. You can find the code [here](https://github.com/ioBroker/ioBroker.ws.client/tree/main/dist/esm).
 
 However, it is always better to load the client part from the ioBroker server.
@@ -143,6 +148,9 @@ and provides a promise to open the UI:
 <!--
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- (@GermanBluefox) Added select ID dialog to the package
+
 ### 0.1.1 (2025-09-04)
 - (@GermanBluefox) Initial commit
 

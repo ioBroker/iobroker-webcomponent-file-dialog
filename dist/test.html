@@ -1,32 +1,126 @@
-<!DOCTYPE html>
-<html lang="en" >
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>Example of File Dialog</title>
+        <script src="./socket.iob.js"></script>
+        <script src="./iobrokerFile.umd.js"></script>
+        <script>
+            window.ioBrokerAdmin = {
+                host: window.location.hostname,
+                port: 8081,
+                protocol: 'http:',
+            };
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Example of File Dialog</title>
-    <script src="./socket.iob.js"></script>
-    <script src="./iobrokerFile.umd.js"></script>
-    <script>
-        function onClose(id) {
-            if (id === null) {
-                // close dialog
-                console.log('Close dialog');
-            } else {
-                console.log(`Selected ${id} and close dialog`);
+            function onClose(id) {
+                if (id === null) {
+                    // close dialog
+                    console.log('Close dialog');
+                } else {
+                    console.log(`Selected ${id} and close dialog`);
+                }
             }
-        }
-    </script>
-</head>
+            function openFileDialog(item) {
+                let fileDialog = document.getElementById('iob-file');
 
-<body>
-    <iobroker-file
-        onclose="onClose"
-        port="8081"
-        open="true"
-        language="de"
-        theme="dark"
-    ></iobroker-file>
-</body>
+                window._iobFileDialogOnSelected = function (newId, oldId) {
+                    let _fileDialog = document.getElementById('iob-file');
+                    if (_fileDialog) {
+                        _fileDialog.setAttribute('open', 'false');
+                        _fileDialog.remove();
+                    }
 
+                    if (newId) {
+                        item.value = newId;
+                        item.dispatchEvent(new Event('input'));
+                    }
+                };
+
+                if (!fileDialog) {
+                    fileDialog = document.createElement('iobroker-file');
+                    fileDialog.setAttribute('theme', 'dark');
+                    fileDialog.setAttribute('id', 'iob-file');
+                    fileDialog.setAttribute('port', window.ioBrokerAdmin.port);
+                    fileDialog.setAttribute('host', window.ioBrokerAdmin.host);
+                    fileDialog.setAttribute('protocol', window.ioBrokerAdmin.protocol);
+                    fileDialog.setAttribute('language', 'en');
+                    fileDialog.setAttribute('zindex', '2000');
+                    fileDialog.setAttribute('onclose', '_iobFileDialogOnSelected');
+                    fileDialog.setAttribute('selected', item.value);
+                    fileDialog.setAttribute('open', 'true');
+                    document.body.appendChild(fileDialog);
+                } else {
+                    console.log('reopenFileDialog', item.value);
+                    fileDialog.setAttribute('selected', item.value);
+                    fileDialog.setAttribute('open', 'true');
+                }
+            }
+
+            function openSelectDialogSameTab(item, allowAll) {
+                let selectDialog = document.getElementById('iob-select-id');
+
+                window._iobOnSelected = function (newId, newObj, oldId, oldObj) {
+                    let _selectDialog = document.getElementById('iob-select-id');
+                    if (_selectDialog) {
+                        _selectDialog.setAttribute('open', 'false');
+                        _selectDialog.remove();
+                    }
+
+                    if (newId) {
+                        item.value = newId;
+                        item.dispatchEvent(new Event('input'));
+                    }
+                };
+
+                if (!selectDialog) {
+                    selectDialog = document.createElement('iobroker-select-id');
+                    selectDialog.setAttribute('theme', 'dark');
+                    selectDialog.setAttribute('id', 'iob-select-id');
+                    selectDialog.setAttribute('port', window.ioBrokerAdmin.port);
+                    selectDialog.setAttribute('host', window.ioBrokerAdmin.host);
+                    selectDialog.setAttribute('protocol', window.ioBrokerAdmin.protocol);
+                    selectDialog.setAttribute('language', 'en');
+                    selectDialog.setAttribute('zindex', '2000');
+                    selectDialog.setAttribute('onclose', '_iobOnSelected');
+                    selectDialog.setAttribute('all', allowAll ? 'true' : 'false');
+                    selectDialog.setAttribute('selected', item.value);
+                    //		selectDialog.setAttribute('token', data?.access_token === 'not required' ? '' : JSON.stringify(data));
+                    selectDialog.setAttribute('open', 'true');
+                    document.body.appendChild(selectDialog);
+                } else {
+                    console.log('reopenSelectDialog', item.value);
+                    selectDialog.setAttribute('all', allowAll ? 'true' : 'false');
+                    //		selectDialog.setAttribute('token', data?.access_token === 'not required' ? '' : JSON.stringify(data));
+                    selectDialog.setAttribute('selected', item.value);
+                    selectDialog.setAttribute('open', 'true');
+                }
+            }
+
+            function showDialog(isFile) {
+                const iobFileButton = document.querySelector('#iob-file-button');
+                const iobSelectIdButton = document.querySelector('#iob-select-id-button');
+                if (isFile) {
+                    openFileDialog(document.getElementById('input'));
+                    iobFileButton.style.backgroundColor = '#535bf2';
+                    iobSelectIdButton.style.backgroundColor = '';
+                } else {
+                    openSelectDialogSameTab(document.getElementById('input'), false);
+                    iobFileButton.style.backgroundColor = '';
+                    iobSelectIdButton.style.backgroundColor = '#535bf2';
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+    <div style="z-index: 20000; position: fixed; left: 0; top: 0; background: white">
+        <button onclick="showDialog(true)" id="iob-file-button">File</button>
+        <button onclick="showDialog(false)" id="iob-select-id-button">Object</button>
+        <input id="input" type="text" readonly />
+    </div>
+    </body>
 </html>

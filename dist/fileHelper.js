@@ -1,4 +1,6 @@
-let fileDialog = null;
+/** @type {HTMLIFrameElement | null} */
+let fileDialog = null;7
+/** @type {(string|null) => void} */
 let storedResolve = null;
 /**
  *

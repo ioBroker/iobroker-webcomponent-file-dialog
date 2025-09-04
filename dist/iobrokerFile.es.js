@@ -47613,10 +47613,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             S.id === Sa ? y = S : m.push(S);
           }), m.sort((b, S) => b.id > S.id ? 1 : b.id < S.id ? -1 : 0), (!this.limitToObjectID || this.limitToObjectID === Sa) && y && m.unshift(y), a[e || "/"] = m, !n)
             return Promise.all(
-              m.filter((b) => b.folder).map((b) => {
-                this.browseFolder(b.id, a, !0).catch(() => {
-                });
-              })
+              m.filter((b) => b.folder).map(
+                (b) => this.browseFolder(b.id, a, !0).catch(() => {
+                })
+              )
             ).then(() => a);
         } catch (u) {
           const m = u;

@@ -143,7 +143,7 @@ and provides a promise to open the UI:
 <!--
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.1.1 (2025-09-04)
 - (@GermanBluefox) Initial commit
 
 ## License

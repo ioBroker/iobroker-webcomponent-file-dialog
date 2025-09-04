@@ -16,15 +16,32 @@ export default class SubscriptionWebComponent extends HTMLElement {
     }
 
     static get observedAttributes(): string[] {
-        return ['open', 'selected', 'all'];
+        return [
+            'open',
+            'selected',
+            'selectonlyfolders',
+            'filterbytype',
+            'filterfiles',
+            'limitpath',
+            'showtoolbar',
+            `allowupload`,
+            `allowdownload`,
+            `allowcreatefolder`,
+            `allowdelete`,
+            `allowview`,
+            `zindex`,
+            `showtypeselector`,
+            `restricttofolder`,
+            `expertmode`,
+            `showexpertbutton`,
+            `allownonrestricted`,
+        ];
     }
 
     // eslint-disable-next-line class-methods-use-this
     attributeChangedCallback(name: string, oldValue: string, newValue: string): void {
         console.log(`attributeChangedCallback: ${name}, ${oldValue}, ${newValue}`);
-        if ((window as any)._iobOnPropertyChanged) {
-            (window as any)._iobOnPropertyChanged(name, newValue);
-        }
+        (window as any)._iobOnPropertyChanged?.(name, newValue);
     }
 
     // is called after the element is attached to the DOM

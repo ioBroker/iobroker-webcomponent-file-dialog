@@ -22,9 +22,7 @@ export default class SubscriptionWebComponent extends HTMLElement {
     // eslint-disable-next-line class-methods-use-this
     attributeChangedCallback(name: string, oldValue: string, newValue: string): void {
         console.log(`attributeChangedCallback: ${name}, ${oldValue}, ${newValue}`);
-        if ((window as any)._iobOnPropertyChanged) {
-            (window as any)._iobOnPropertyChanged(name, newValue);
-        }
+        (window as any)._iobOnPropertyChanged?.(name, newValue);
     }
 
     // is called after the element is attached to the DOM

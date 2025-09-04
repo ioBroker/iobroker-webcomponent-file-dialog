@@ -26,6 +26,8 @@
             }
             function openFileDialog(item) {
                 let fileDialog = document.getElementById('iob-file');
+                fileDialog?.remove();
+                fileDialog = null;
 
                 window._iobFileDialogOnSelected = function (newId, oldId) {
                     let _fileDialog = document.getElementById('iob-file');
@@ -62,6 +64,8 @@
 
             function openSelectDialogSameTab(item, allowAll) {
                 let selectDialog = document.getElementById('iob-select-id');
+                selectDialog?.remove();
+                selectDialog = null;
 
                 window._iobOnSelected = function (newId, newObj, oldId, oldObj) {
                     let _selectDialog = document.getElementById('iob-select-id');
@@ -117,10 +121,24 @@
     </head>
 
     <body>
-    <div style="z-index: 20000; position: fixed; left: 0; top: 0; background: white">
-        <button onclick="showDialog(true)" id="iob-file-button">File</button>
-        <button onclick="showDialog(false)" id="iob-select-id-button">Object</button>
-        <input id="input" type="text" readonly />
-    </div>
+        <div style="z-index: 20000; position: fixed; left: 0; top: 0; background: white">
+            <button
+                onclick="showDialog(true)"
+                id="iob-file-button"
+            >
+                File
+            </button>
+            <button
+                onclick="showDialog(false)"
+                id="iob-select-id-button"
+            >
+                Object
+            </button>
+            <input
+                id="input"
+                type="text"
+                readonly
+            />
+        </div>
     </body>
 </html>

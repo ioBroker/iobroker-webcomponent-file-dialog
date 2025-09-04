@@ -6,6 +6,8 @@ It can operate with admin or web instances without requiring authentication. If 
 
 Please note that mixed connections from an HTTP page to a WSS server and vice versa (from HTTPS to WS) do not work in most browsers.
 
+![example image](img/example.png)
+
 Before creating the dialog, the socket file must be loaded. You can find the code [here](https://github.com/ioBroker/ioBroker.ws.client/tree/main/dist/esm).
 
 However, it is always better to load the client part from the ioBroker server.

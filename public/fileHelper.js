@@ -42,15 +42,16 @@ export async function openFileDialog(config) {
         }
 
         // destroy old dialog
-        let fileDialog = document.getElementById('iobroker-select-id');
+        let fileDialog = document.getElementById('iob-file');
         if (fileDialog) {
             fileDialog.remove();
         }
 
         fileDialog = document.createElement('iobroker-file');
         window._iobFileDialogOnSelected = (newId) => {
-            fileDialog.setAttribute('open', 'false');
-            fileDialog.remove();
+            const _fileDialog = document.getElementById('iob-file');
+            _fileDialog.setAttribute('open', 'false');
+            _fileDialog.remove();
             storedFileResolve(newId);
         };
         fileDialog.setAttribute('id', 'iob-file');
@@ -129,14 +130,14 @@ export async function openSelectIdDialog(config) {
             await import('./iobrokerFile.es.js');
             codeLoaded = true;
         }
-        let selectDialog = document.getElementById('iobroker-select-id');
+        let selectDialog = document.getElementById('iob-select-id');
         if (selectDialog) {
             selectDialog.remove();
         }
 
         selectDialog = document.createElement('iobroker-select-id');
         window._iobSelectIdDialogOnSelected = (newId) => {
-            const _selectDialog = document.getElementById('iobroker-select-id');
+            const _selectDialog = document.getElementById('iob-select-id');
             _selectDialog.remove();
             storedObjectResolve(newId);
         };

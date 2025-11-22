@@ -217,7 +217,6 @@ export class FileDialogWebComponent extends Component<IFileDialogWebComponentPro
                             port: this.props.port,
                             host: this.props.host,
                             protocol: this.props.protocol,
-                            // @ts-expect-error will be fixed later
                             token: access_token,
                         },
                         (connected: boolean): void => this.setState({ connected }),
@@ -245,7 +244,6 @@ export class FileDialogWebComponent extends Component<IFileDialogWebComponentPro
                     port: this.props.port,
                     host: this.props.host,
                     protocol: this.props.protocol,
-                    // @ts-expect-error
                     token: accessToken,
                 },
                 (connected: boolean): void => this.setState({ connected }),

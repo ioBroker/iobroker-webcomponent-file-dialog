@@ -148,6 +148,9 @@ and provides a promise to open the UI:
 <!--
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- (@GermanBluefox) Updated packages
+
 ### 0.2.2 (2025-09-04)
 - (@GermanBluefox) Added select ID dialog to the package
 

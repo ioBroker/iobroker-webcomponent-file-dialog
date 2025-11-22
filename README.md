@@ -148,7 +148,7 @@ and provides a promise to open the UI:
 <!--
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.0.0 (2025-11-22)
 - (@GermanBluefox) Updated packages
 
 ### 0.2.2 (2025-09-04)

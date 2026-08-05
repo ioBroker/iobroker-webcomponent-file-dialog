@@ -148,7 +148,7 @@ and provides a promise to open the UI:
 <!--
     ### **WORK IN PROGRESS**
 -->
-### 2.0.0 (2026-08-05)
+### **WORK IN PROGRESS**
 - (@GermanBluefox) Updated to React 19 and MUI 9
 
 ### 1.0.0 (2025-11-22)

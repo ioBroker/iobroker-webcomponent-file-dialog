@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 
-import { type Connection, Theme, type IobTheme, I18n } from '@iobroker/adapter-react-v5';
+import { type Connection, Theme, type IobTheme, I18n } from '@iobroker/gui-components';
 
 import type { OAuth2Response } from '@iobroker/socket-client';
 
 import { DialogSelectFile } from './SelectFile';
 import singletonConnection from './singletonConnection';
-// import { DialogSelectFile } from '@iobroker/adapter-react-v5';
+// import { DialogSelectFile } from '@iobroker/gui-components';
 
 type OnClose = (newId: string | null, oldId?: string) => void;
 

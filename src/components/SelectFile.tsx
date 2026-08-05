@@ -12,7 +12,7 @@ import { Cancel as IconCancel, Check as IconOk } from '@mui/icons-material';
 
 import type { Connection } from '@iobroker/socket-client';
 
-import { I18n, type IobTheme } from '@iobroker/adapter-react-v5';
+import { I18n, type IobTheme } from '@iobroker/gui-components';
 import { FileBrowser } from './FileBrowser';
 
 const styles: Record<string, React.CSSProperties> = {
@@ -48,7 +48,7 @@ const styles: Record<string, React.CSSProperties> = {
 };
 
 interface DialogSelectFileProps {
-    /** where to store settings in localStorage * @property {string} [title] The dialog title; default: Please select object ID... (translated) */
+    /** where to store settings in localStorage */
     dialogName?: string;
     /** The dialog title; default: Please select object ID... (translated) */
     title?: string;

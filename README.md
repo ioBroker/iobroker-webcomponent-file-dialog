@@ -13,7 +13,7 @@ So If you want to use both dialogs in one project there is no need to load a `@i
 
 How to use Object ID dialog you can find [here](https://github.com/ioBroker/iobroker-webcomponent-selectid-dialog/blob/main/README.md)
 
-Before creating the dialog, the socket file must be loaded. You can find the code [here](https://github.com/ioBroker/ioBroker.ws.client/tree/main/dist/esm).
+Before creating the dialog, the socket file must be loaded. You can find the code [here](https://github.com/ioBroker/ioBroker.ws.client/tree/main/build/esm).
 
 However, it is always better to load the client part from the ioBroker server.
 ```html
@@ -126,7 +126,7 @@ Or static:
 There is also a wrapper included in the file `fileHelper.js`, wich lazy loads the ESM module
 and provides a promise to open the UI:
 ```js
-  import openFileDialog from '@iobroker/webcomponent-file-dialog/dist/fileHelper.js'
+  import openFileDialog from '@iobroker/webcomponent-file-dialog/fileHelper.js'
   const id = await openFileDialog({
       port: 8089,
       host: '1.2.3.4',
@@ -142,12 +142,15 @@ and provides a promise to open the UI:
 ```
 
 ## Todo
-- Replace SelectFile.tsx with `@iobroker/adapter-react-v5` component as admin will be released
+- Replace SelectFile.tsx with `@iobroker/gui-components` component as admin will be released
 
 ## Changelog
 <!--
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- (@GermanBluefox) Updated to React 19 and MUI 9
+
 ### 1.0.0 (2025-11-22)
 - (@GermanBluefox) Updated packages
 
@@ -160,7 +163,7 @@ and provides a promise to open the UI:
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2025 Denis Haev <dogafox@gmail.com>
+Copyright (c) 2025-2026 Denis Haev <dogafox@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

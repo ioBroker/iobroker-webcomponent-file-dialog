@@ -79,7 +79,7 @@ import {
     type IobTheme,
     type FileViewerProps,
     EXTENSIONS,
-} from '@iobroker/adapter-react-v5';
+} from '@iobroker/gui-components';
 
 const ROW_HEIGHT = 32;
 const BUTTON_WIDTH = 32;
@@ -627,7 +627,7 @@ export class FileBrowserClass extends Component<FileBrowserProps, FileBrowserSta
 
     private readonly scrollPositions: Record<string, number> = {};
 
-    private readonly refFileDiv: React.RefObject<HTMLDivElement>;
+    private readonly refFileDiv: React.RefObject<HTMLDivElement | null>;
 
     constructor(props: FileBrowserProps) {
         super(props);
@@ -752,16 +752,16 @@ export class FileBrowserClass extends Component<FileBrowserProps, FileBrowserSta
     async loadFolders(): Promise<void> {
         this.initialReadFinished = false;
 
-        let folders = (await this.browseFolder('/')) as unknown as Folders;
+        let folders = await this.browseFolder('/');
 
         if (this.state.viewType === TABLE) {
-            folders = (await this.browseFolders([...this.state.expanded], folders)) as unknown as Folders;
+            folders = await this.browseFolders([...this.state.expanded], folders);
         } else if (
             this.state.currentDir &&
             this.state.currentDir !== '/' &&
             (!this.limitToObjectID || this.state.currentDir.startsWith(this.limitToObjectID))
         ) {
-            folders = (await this.browseFolder(this.state.currentDir, folders)) as unknown as Folders;
+            folders = await this.browseFolder(this.state.currentDir, folders);
         }
 
         this.setState({ folders }, () => {
@@ -857,7 +857,7 @@ export class FileBrowserClass extends Component<FileBrowserProps, FileBrowserSta
             if (this.browseList) {
                 // if component still mounted
                 this.browseList.push({
-                    resolve: resolve as unknown as (files: ioBroker.ReadDirResult[]) => void,
+                    resolve,
                     reject,
                     adapter,
                     relPath,

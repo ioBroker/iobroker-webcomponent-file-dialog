@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ioBroker/iobroker-webcomponent-file-dialog"
+    "url": "git+https://github.com/ioBroker/iobroker-webcomponent-file-dialog.git"
   },
   "main": "./build/iobrokerFile.es.js",
   "module": "./build/iobrokerFile.es.js",
